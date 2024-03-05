@@ -52,7 +52,7 @@ finally{
     console.log("One piece is best");
 }
 
-// (Syntax Error, TypeError, URL error)
+// // (Syntax Error, TypeError, URL error)
 try{
     let url="https://www.youtube.com/watch?v=_am9rKw4vWw"
     fetch(url).then((response)=>{})
@@ -60,7 +60,26 @@ try{
 }
 catch(error){
     console.log("Caught", error.name,error.message);
+    // console.error(error.name);
+    // console.error(error.message);
 }
 finally{
     console.log("End");
 }
+
+function doSomethingErrorProne() {
+    if (ourCodeMakesAMistake()) {
+      throw new Error("The message");
+    } else {
+      doSomethingToGetAJavaScriptError();
+    }
+  }
+  
+  try {
+    doSomethingErrorProne();
+  } catch (e) {
+    
+    console.error(e.name); 
+    console.error(e.message); 
+  }
+  
